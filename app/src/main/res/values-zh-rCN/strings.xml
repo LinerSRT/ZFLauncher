@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Launcher</string>
+    <string name="name_zhifa">执法记录仪</string>
+    <string name="name_ptt">对讲机</string>
+    <string name="name_file_manager">文件管理</string>
+    <string name="name_cards">证件识别</string>
+    <string name="name_phone">电话</string>
+    <string name="name_settings">系统设置</string>
+
     <string name="volteText">Volte</string>
     <string name="qqText">QQ物联</string>
     <string name="flowText">流量监控</string>

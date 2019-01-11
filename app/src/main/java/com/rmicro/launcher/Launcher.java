@@ -153,17 +153,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        if (isMusicPlay) {
-            musicPlayPause.setImageResource(R.drawable.home_music_btn_pause);
-        } else {
-            musicPlayPause.setImageResource(R.drawable.home_music_btn_play);
-        }
-        canTakePhoto = PreferanceUtils.getDataBoolean(mContext, "canTakePhoto", false);
-
-        //刷新界面
-        boolean isFullWind = PreferanceUtils.getDataBoolean(mContext, "isFullWind", false);
-        refreshView(isFullWind);
-
     }
 
     @Override
@@ -183,51 +172,17 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.naviLayout:
-                for (int i = 0; i < Constant.PACKAGE_NAVI_PACKAGE.length; i++) {
-                    if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_NAVI_PACKAGE[i])) {
-                        IntentUtils.startAPP(mActivity, Constant.PACKAGE_NAVI_PACKAGE[i]);
-                        break;
-                    }
-                }
+            case R.id.zhifayi:
                 break;
-            case R.id.photoBottLayout:
-                if (!canTakePhoto) {
-                    canTakePhoto = true;
-                    photoBottToggle.setChecked(true);
-                    photoBottText.setText(mContext.getString(R.string.opened));
-                } else {
-                    canTakePhoto = false;
-                    photoBottToggle.setChecked(false);
-                    photoBottText.setText(mContext.getString(R.string.closed));
-                }
-                PreferanceUtils.saveDataBoolean(mContext, "canTakePhoto", canTakePhoto);
+            case R.id.ptt:
                 break;
-            case R.id.drivLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_DRIV_DX_NEW)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_DRIV_DX_NEW);
-                }
+            case R.id.filemanager:
                 break;
-            case R.id.musicLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_KWMUSIC)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_KWMUSIC);
-                }
+            case R.id.idcard:
                 break;
-            case R.id.musicPre:
+            case R.id.phone:
                 break;
-            case R.id.musicPlayPause:
-                break;
-            case R.id.musicNext:
-                break;
-            case R.id.etcLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_ETC)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_ETC);
-                }
-                break;
-            case R.id.picLayout:
-                if (canTakePhoto) {
-                    mContext.sendBroadcast(new Intent(Constant.NOTIFACATION_MSG_TO_RECODER).putExtra("msg", "getphoto").putExtra("enableSound", true));
-                }
+            case R.id.settings:
                 break;
             case R.id.btLayout:
                 if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_BT_DX)) {
@@ -304,37 +259,12 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void initPagerFirst(View view) {
-        view.findViewById(R.id.naviLayout).setOnClickListener(this);
-        remainingDistance = (TextView)view.findViewById(R.id.remainingDistance);
-        currentLocation = (TextView)view.findViewById(R.id.currentLocation);
-
-        view.findViewById(R.id.drivLayout).setOnClickListener(this);
-        recordMarket = (TextView)view.findViewById(R.id.recordMarket);
-        drivStartImage = (ImageView) view.findViewById(R.id.drivStartImage);
-        drivStartText = (TextView)view.findViewById(R.id.drivStartText);
-
-        view.findViewById(R.id.musicLayout).setOnClickListener(this);
-        view.findViewById(R.id.musicPre).setOnClickListener(this);
-        view.findViewById(R.id.musicNext).setOnClickListener(this);
-        musicPlayPause = (ImageView) view.findViewById(R.id.musicPlayPause);
-        musicPlayPause.setOnClickListener(this);
-
-        etcLayout = (RelativeLayout)view.findViewById(R.id.etcLayout);
-        etcLessMoney = (TextView) view.findViewById(R.id.etcLessMoney);
-        etcLayout.setOnClickListener(this);
-
-        picLayout = (RelativeLayout)view.findViewById(R.id.picLayout);
-        picLayout.setOnClickListener(this);
-        photoBottToggle = (ToggleButton)view.findViewById(R.id.photoBottToggle);
-        view.findViewById(R.id.photoBottLayout).setOnClickListener(this);
-        photoBottText = (TextView) view.findViewById(R.id.photoBottText);
-        canTakePhoto = PreferanceUtils.getDataBoolean(mContext, "canTakePhoto", false);
-        photoBottToggle.setChecked(canTakePhoto);
-        if (!canTakePhoto) {
-            photoBottText.setText(mContext.getString(R.string.closed));
-        } else {
-            photoBottText.setText(mContext.getString(R.string.opened));
-        }
+        view.findViewById(R.id.zhifayi).setOnClickListener(this);
+        view.findViewById(R.id.ptt).setOnClickListener(this);
+        view.findViewById(R.id.filemanager).setOnClickListener(this);
+        view.findViewById(R.id.idcard).setOnClickListener(this);
+        view.findViewById(R.id.phone).setOnClickListener(this);
+        view.findViewById(R.id.settings).setOnClickListener(this);
         newPoint();
     }
 
@@ -523,23 +453,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
 //    };
 
 
-    private void refreshView(boolean isFullWind) {
-        if (isFullWind) {
-            etcLayout.setVisibility(View.VISIBLE);
-            picLayout.setVisibility(View.VISIBLE);
-            wechatLayout.setVisibility(View.VISIBLE);
-            qqLayout.setVisibility(View.VISIBLE);
-            edogLayout.setVisibility(View.VISIBLE);
-            galleryLayout.setVisibility(View.VISIBLE);
-        } else {
-            etcLayout.setVisibility(View.GONE);
-            picLayout.setVisibility(View.GONE);
-            wechatLayout.setVisibility(View.GONE);
-            qqLayout.setVisibility(View.GONE);
-            edogLayout.setVisibility(View.GONE);
-            galleryLayout.setVisibility(View.GONE);
-        }
-    }
 
     private void switchRecord(boolean status) {
         if (status) {
@@ -738,7 +651,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                 case Constant.REMOVE_NAVIGATIONBAR:
                     boolean isWindFullData = intent.getBooleanExtra("remove", false);
                     PreferanceUtils.saveDataBoolean(mContext, "isFullWind", isWindFullData);
-                    refreshView(isWindFullData);
                     break;
                 case Constant.AMPA_BROAD:
                     String lessDis = String.format("%.2f",

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/topbarImageHeight"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/marging10"
+        android:layout_marginTop="@dimen/marging4"
         android:gravity="center"
         android:orientation="horizontal"></LinearLayout>
 
@@ -19,6 +19,6 @@
         android:layout_height="@dimen/viewpageHight"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marging10">
+        android:layout_marginBottom="@dimen/marging2">
     </android.support.v4.view.ViewPager>
 </RelativeLayout>

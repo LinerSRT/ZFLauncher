@@ -34,10 +34,10 @@
     <!-- 以上为通用-->
     <style name="LayoutBg">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">100dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginLeft">@dimen/marging20</item>
-        <item name="android:background">@drawable/layoutbg</item>
+        <item name="android:background">@drawable/zf_app_select_style_bg</item>
     </style>
 
     <style name="TopText">
@@ -50,10 +50,21 @@
         <item name="android:textColor">@color/colorTextColor</item>
     </style>
 
+    <style name="BtmText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">@dimen/textView1MarginBtm</item>
+        <item name="android:textSize">@dimen/textView1SizeTop</item>
+        <item name="android:textColor">@color/colorTextColor</item>
+    </style>
+
     <style name="ImageIcon">
-        <item name="android:layout_width">@dimen/imageViewWidthHeight</item>
-        <item name="android:layout_height">@dimen/imageViewWidthHeight</item>
-        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">@dimen/imageViewWidth</item>
+        <item name="android:layout_height">@dimen/imageViewHeight</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_marginTop">@dimen/imageViewMarginTop</item>
     </style>
 
