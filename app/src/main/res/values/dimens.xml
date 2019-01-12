@@ -3,20 +3,20 @@
     <dimen name="textSizeTopbar">28px</dimen>
     <dimen name="navigationPointHeight">40px</dimen>
     <dimen name="topbarMarging10">10px</dimen>
-    <dimen name="topbarImageWidth">26px</dimen>
-    <dimen name="topbarImageHeight">22px</dimen>
+    <dimen name="topbarImageWidth">16dp</dimen>
+    <dimen name="topbarImageHeight">4dp</dimen>
     <dimen name="topbarImageHight10">10px</dimen>
     <dimen name="topbarImageWidth56">56px</dimen>
-    <dimen name="marging2">10px</dimen>
-    <dimen name="marging4">10px</dimen>
-    <dimen name="marging6">10px</dimen>
+    <dimen name="marging2">2px</dimen>
+    <dimen name="marging4">4px</dimen>
+    <dimen name="marging6">6px</dimen>
     <dimen name="marging10">10px</dimen>
     <dimen name="marging40">40px</dimen>
     <dimen name="marging60">60px</dimen>
     <dimen name="textWeekDataSize">24px</dimen>
     <dimen name="radius">20px</dimen>
-    <dimen name="pointWidth">36px</dimen>
-    <dimen name="pointHeight">12px</dimen>
+    <dimen name="pointWidth">20px</dimen>
+    <dimen name="pointHeight">10px</dimen>
     <dimen name="viewpageHight">380px</dimen>
     <!-- top is public-->
     <dimen name="marging20">20px</dimen>

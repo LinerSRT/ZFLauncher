@@ -52,37 +52,20 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     private Activity mActivity = Launcher.this;
     private static final int REFRESH_WATER = 10086;
     private static final int REFRESH_LIGHT = 10087;
-    private String locationCity = "";
 
-    //天气相关数据
-    private int[] weatherIcon = {R.mipmap.cloudy, R.mipmap.foggy, R.mipmap.hail, R.mipmap.rainy1, R.mipmap.rainy1, R.mipmap.rainy3, R.mipmap.rainy5, R.mipmap.snowy1, R.mipmap.snowy3, R.mipmap.snowy4, R.mipmap.snowy5, R.mipmap.sounderainny, R.mipmap.sun, R.mipmap.sunning};
-    private Map<String, Integer> weatherIconData = new HashMap<>();
-    //第一页全部图标
-    private RelativeLayout etcLayout, picLayout;
-    private TextView remainingDistance, currentLocation, recordMarket, drivStartText, etcLessMoney, photoBottText;
-    private ImageView drivStartImage, musicPlayPause;
-    private boolean canTakePhoto = false;
-    private ToggleButton photoBottToggle;
     //第二页全部图标
     private RelativeLayout qqLayout, wechatLayout;
     private TextView fmSize;
     private static SeekBar soundSeekBar, lightSeekBar;
-    //第三页全部图标
-    private RelativeLayout edogLayout, galleryLayout;
-    private ToggleButton flowToggle, btBottToggle;
-    private ImageView btConnectIcon;
-    private TextView flowToggleText, btConnectText, btBootText;
+
     private LinearLayout navigationPoint;
 
     private boolean isLongClick = false;
     private float y1;
     private float x1;
     private int normal = 0;
-    // private WifiManager mWifiManager;
     private TelephonyManager mTelephoneManager;
     private AudioManager mAudioManager;
-    private ConnectivityManager mConnectivityManager;
-    private boolean isMusicPlay = false;
     private long drivTimeLong;
     private MyHandler mHandler;
 
@@ -109,14 +92,11 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         navigationPoint = (LinearLayout)findViewById(R.id.navigationPoint);
         View pageFirst = LayoutInflater.from(mContext).inflate(R.layout.pagerfirst, null, false);
         View pagerSecond = LayoutInflater.from(mContext).inflate(R.layout.pagersecond, null, false);
-        View pagerThird = LayoutInflater.from(mContext).inflate(R.layout.pagerthird, null, false);
         viewData.add(pageFirst);
         viewData.add(pagerSecond);
-        viewData.add(pagerThird);
         //初始化控件
         initPagerFirst(pageFirst);
         initPagerSecond(pagerSecond);
-        initPagerThird(pagerThird);
         setPointFocors(0);
         MyVPAdapter myVPAdapter = new MyVPAdapter(viewData);
         viewPagerMain.setAdapter(myVPAdapter);
@@ -140,9 +120,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     protected void initData() {
         mTelephoneManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-        // 获取系统的网络服务
-        mConnectivityManager = (ConnectivityManager) mContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
 
@@ -190,13 +167,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                 }
                 break;
             case R.id.btBottLayout:
-                if (BluetoothAdapter.getDefaultAdapter().isEnabled()) {
-                    btBottToggle.setChecked(false);
-                    BluetoothAdapter.getDefaultAdapter().disable();
-                } else {
-                    btBottToggle.setChecked(true);
-                    BluetoothAdapter.getDefaultAdapter().enable();
-                }
                 break;
             case R.id.fmLayout:
                 if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_FM_DX)) {
@@ -218,41 +188,10 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                     IntentUtils.startAPP(mActivity, Constant.PACKAGE_QQWL);
                 }
                 break;
-            case R.id.flowLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_FLOW_DX)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_FLOW_DX);
-                }
-                break;
-            case R.id.flowToggleLayout:
-                if (Utils.haveSimCard(mTelephoneManager) && Utils.isFlowOpen(mTelephoneManager)) {
-                    flowToggle.setChecked(false);
-                    flowToggleText.setText(getString(R.string.noOpen));
-                    Utils.setMobileFlowState(mTelephoneManager, false);
-                } else {
-                    flowToggle.setChecked(true);
-                    flowToggleText.setText(getString(R.string.opened));
-                    Utils.setMobileFlowState(mTelephoneManager, true);
-                }
-                break;
-            case R.id.volteLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_VOLTE)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_VOLTE);
-                }
-                break;
-            case R.id.edogLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_EDOG)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_EDOG);
-                }
-                break;
-            case R.id.galleryLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_GALLERY_DX)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_GALLERY_DX);
-                }
-                break;
-            case R.id.moreLayout:
-                Intent allAPP = new Intent(mContext, AllAPP.class);
-                mContext.startActivity(allAPP);
-                break;
+//            case R.id.moreLayout:
+//                Intent allAPP = new Intent(mContext, AllAPP.class);
+//                mContext.startActivity(allAPP);
+//                break;
             default:
                 break;
         }
@@ -271,19 +210,8 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     private void initPagerSecond(View view) {
         view.findViewById(R.id.btLayout).setOnClickListener(this);
         view.findViewById(R.id.btBottLayout).setOnClickListener(this);
-        btBottToggle = (ToggleButton) view.findViewById(R.id.btBottToggle);
-        btBootText = (TextView) view.findViewById(R.id.btBootText);
-        btConnectText = (TextView) view.findViewById(R.id.btConnectText);
-        btConnectIcon = (ImageView) view.findViewById(R.id.btConnectIcon);
-        if (BluetoothAdapter.getDefaultAdapter().isEnabled()) {
-            btBottToggle.setChecked(true);
-        } else {
-            btBottToggle.setChecked(false);
-        }
-
         view.findViewById(R.id.fmLayout).setOnClickListener(this);
         fmSize = (TextView) view.findViewById(R.id.fmSize);
-
         view.findViewById(R.id.setLayout).setOnClickListener(this);
         view.findViewById(R.id.setLayout).setOnLongClickListener(mLongClick);
         view.findViewById(R.id.setLayout).setOnTouchListener(mTouchListener);
@@ -293,32 +221,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         normal = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SCREEN_BRIGHTNESS, 255);
         lightSeekBar.setProgress(normal);
-//        lightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                int tmpInt = seekBar.getProgress();
-//                mContext.sendBroadcast(new Intent(
-//                        Constant.SYSTEM_BRIGHTNESS_CHANGE_ACTION));
-//                Settings.System.putInt(mContext.getContentResolver(),
-//                        Settings.System.SCREEN_BRIGHTNESS, tmpInt);
-//                tmpInt = Settings.System.getInt(mContext.getContentResolver(),
-//                        Settings.System.SCREEN_BRIGHTNESS, -1);
-//                WindowManager.LayoutParams wl = getWindow().getAttributes();
-//                float tmpFloat = (float) tmpInt / 255;
-//                if (tmpFloat > 0 && tmpFloat <= 1) {
-//                    wl.screenBrightness = tmpFloat;
-//                }
-//                getWindow().setAttributes(wl);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//            }
-//        });
         view.findViewById(R.id.soundLayout).setOnTouchListener(mSoundTouch);
         soundSeekBar = (com.rmicro.launcher.view.MySeekBar)view.findViewById(R.id.soundSeekBar);
         int maxVolume = mAudioManager
@@ -327,29 +229,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                 .getStreamVolume(AudioManager.STREAM_MUSIC);
         soundSeekBar.setMax(maxVolume);
         soundSeekBar.setProgress(currentVolume);
-//        soundSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, final int progress, boolean fromUser) {
-//                AsyncTask.execute(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
-//                                progress, 0);
-//                    }
-//                });
-//                Intent VolumnChangeAction = new Intent(Constant.SYSTEM_VOLUMN_CHANGE_ACTION);
-//                mContext.sendBroadcast(VolumnChangeAction);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//            }
-//        });
-
         wechatLayout = (RelativeLayout)view.findViewById(R.id.wechatLayout);
         wechatLayout.setOnClickListener(this);
 
@@ -358,25 +237,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
 
         newPoint();
     }
-
-    private void initPagerThird(View view) {
-        view.findViewById(R.id.flowLayout).setOnClickListener(this);
-        view.findViewById(R.id.flowToggleLayout).setOnClickListener(this);
-        flowToggle = (ToggleButton)view.findViewById(R.id.flowToggle);
-        flowToggleText = (TextView) view.findViewById(R.id.flowToggleText);
-        view.findViewById(R.id.volteLayout).setOnClickListener(this);
-
-        edogLayout = (RelativeLayout)view.findViewById(R.id.edogLayout);
-        edogLayout.setOnClickListener(this);
-
-        galleryLayout = (RelativeLayout)view.findViewById(R.id.galleryLayout);
-        galleryLayout.setOnClickListener(this);
-
-        view.findViewById(R.id.moreLayout).setOnClickListener(this);
-
-        newPoint();
-    }
-
     private void registerBroadcast() {
         IntentFilter filterRecord = new IntentFilter();
         filterRecord.addAction(Constant.RECORDER_START);
@@ -467,8 +327,8 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.rightMargin = 10;
-        params.leftMargin = 10;
+        params.rightMargin = 3;
+        params.leftMargin = 3;
         params.gravity = Gravity.CENTER_VERTICAL;
         pointView.setLayoutParams(params);
         pointView.setBackgroundResource(R.drawable.pointbg);
@@ -488,15 +348,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     private void refreshRecordingView(boolean isRecording) {
         mHandler.removeCallbacks(mTimeRunnable);
         drivTimeLong = 0;
-        if (isRecording) {
-            drivStartImage.setVisibility(View.VISIBLE);
-            drivStartText.setText(mContext.getResources().getString(R.string.recording));
-            mHandler.post(mTimeRunnable);
-        } else {
-            drivStartImage.setVisibility(View.GONE);
-            drivStartText.setText(mContext.getResources().getString(R.string.norecording));
-            recordMarket.setText(mContext.getResources().getString(R.string.duration));
-        }
     }
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -613,13 +464,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             int minute = (int) (drivTimeLong / 60) % 60;
             int second = (int) (drivTimeLong % 60);
 
-            if (recordMarket != null) {
-                recordMarket.setText(String.format("%02d:%02d:%02d", hour, minute,
-                        second));
-                if (recordMarket.getText().equals("99:59:59")) {
-                    drivTimeLong = 0;
-                }
-            }
             mHandler.postDelayed(mTimeRunnable, 1000);
         }
     };
@@ -646,7 +490,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             String action = intent.getAction();
             switch (action) {
                 case Constant.ETC_BROADCAST:
-                    etcLessMoney.setText(intent.getFloatExtra("etcLessMoney", 000.0f) + "");
                     break;
                 case Constant.REMOVE_NAVIGATIONBAR:
                     boolean isWindFullData = intent.getBooleanExtra("remove", false);
@@ -655,7 +498,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                 case Constant.AMPA_BROAD:
                     String lessDis = String.format("%.2f",
                             (float) intent.getIntExtra("ROUTE_REMAIN_DIS", 0) / 1000);
-                    remainingDistance.setText(lessDis + " km");
                     break;
                 case Constant.VOLUME_CHANGED_ACTION:
                     int currVolume = mAudioManager

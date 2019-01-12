@@ -3,20 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/appAppPoint"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbarImageHeight"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal"></LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/marging40"
-        android:layout_marginTop="@dimen/marging40"></android.support.v4.view.ViewPager>
-
-    <LinearLayout
-        android:id="@+id/appAppPoint"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/marging40"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal"></LinearLayout>
-
-
+        android:layout_marginBottom="@dimen/marging10"
+        android:layout_marginTop="@dimen/marging4">
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>
