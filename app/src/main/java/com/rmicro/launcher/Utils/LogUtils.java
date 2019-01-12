@@ -29,4 +29,14 @@ public class LogUtils {
         if (showLog)
             Log.i(tag, text + "");
     }
+    public static void LOGD(String tag, Object text) {
+        if (showLog)
+            Log.d(tag, text + "");
+    }
+
+    public static void LOGI(String tag, Object text) {
+        if (showLog)
+            Log.i(tag, text + "");
+    }
+
 }

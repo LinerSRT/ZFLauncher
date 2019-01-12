@@ -3,15 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context="com.rmicro.launcher.AllAPP">
 
     <LinearLayout
         android:id="@+id/appAppPoint"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/topbarImageHeight"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/marging4"
+        android:layout_height="@dimen/top_nav_line_height"
+        android:layout_marginTop="@dimen/top_nav_line_top"
         android:gravity="center"
         android:orientation="horizontal"></LinearLayout>
 
@@ -19,15 +17,8 @@
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/appcard_view_top"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"></android.support.v4.view.ViewPager>
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/appAppPoint"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/marging40"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal"></LinearLayout>-->
-
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>

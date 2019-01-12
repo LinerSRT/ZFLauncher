@@ -7,12 +7,6 @@
     <dimen name="topbarImageHeight">4dp</dimen>
     <dimen name="topbarImageHight10">10px</dimen>
     <dimen name="topbarImageWidth56">56px</dimen>
-    <dimen name="marging2">2px</dimen>
-    <dimen name="marging4">4px</dimen>
-    <dimen name="marging6">6px</dimen>
-    <dimen name="marging10">10px</dimen>
-    <dimen name="marging40">40px</dimen>
-    <dimen name="marging60">60px</dimen>
     <dimen name="textWeekDataSize">24px</dimen>
     <dimen name="radius">20px</dimen>
     <dimen name="pointWidth">20px</dimen>
@@ -43,6 +37,35 @@
     <dimen name="switchTextSize">24px</dimen>
 
 
+    <!--主界面布局-->
+    <dimen name="top_nav_line_width">50px</dimen>
+    <dimen name="top_nav_line_height">15px</dimen>
+    <dimen name="top_nav_line_top">5px</dimen>
+
+    <dimen name="appcard_view_width">150px</dimen>
+    <dimen name="appcard_view_heiht">90px</dimen>
+    <dimen name="appcard_view_image_width">80px</dimen>
+    <dimen name="appcard_view_image_height">80px</dimen>
+    <dimen name="appcard_view_top">20px</dimen>
+    <dimen name="appcard_view_left">10px</dimen>
+    <dimen name="appcard_view_right">10px</dimen>
+    <dimen name="appcard_view_btm">10px</dimen>
+
+    <!-- 应用图标大小 -->
+    <dimen name="app_icon_size">80px</dimen>
+
+    <!--布局间隔-->
+    <dimen name="margin1">1px</dimen>
+    <dimen name="margin2">2px</dimen>
+    <dimen name="margin3">3px</dimen>
+    <dimen name="margin4">4px</dimen>
+    <dimen name="margin5">5px</dimen>
+    <dimen name="margin6">6px</dimen>
+    <dimen name="margin8">8px</dimen>
+    <dimen name="margin10">10px</dimen>
+    <dimen name="margin15">15px</dimen>
+    <dimen name="margin20">20px</dimen>
+    <dimen name="margin25">25px</dimen>
 
     <!-- 文字大小 -->
     <dimen name="text_40">40sp</dimen>

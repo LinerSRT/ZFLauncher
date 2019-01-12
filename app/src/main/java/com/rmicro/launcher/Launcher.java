@@ -1,7 +1,6 @@
 package com.rmicro.launcher;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +8,7 @@ import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,7 +26,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.rmicro.launcher.Utils.IntentUtils;
 import com.rmicro.launcher.Utils.LogUtils;
@@ -41,9 +37,8 @@ import com.rmicro.launcher.custom.WeatherBean;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Launcher extends AppCompatActivity implements View.OnClickListener {
@@ -90,8 +85,8 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         viewData.clear();
         ViewPager viewPagerMain = (ViewPager)findViewById(R.id.viewPagerMain);
         navigationPoint = (LinearLayout)findViewById(R.id.navigationPoint);
-        View pageFirst = LayoutInflater.from(mContext).inflate(R.layout.pagerfirst, null, false);
-        View pagerSecond = LayoutInflater.from(mContext).inflate(R.layout.pagersecond, null, false);
+        View pageFirst = LayoutInflater.from(mContext).inflate(R.layout.pager_first, null, false);
+        View pagerSecond = LayoutInflater.from(mContext).inflate(R.layout.pager_second, null, false);
         viewData.add(pageFirst);
         viewData.add(pagerSecond);
         //初始化控件
@@ -115,6 +110,24 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    public void startSetWallpaper() {
+        final Intent pickWallpaper = new Intent(Intent.ACTION_SET_WALLPAPER);
+        Intent chooser = Intent.createChooser(pickWallpaper, "Set WallPaper");
+        startActivityForResult(chooser, 10);
+    }
+
+    void appChanged(String[] packageNames, int op) {
+        if (mWorkspace != null)
+            mWorkspace.appChanged(packageNames, op);
+    }
+
+    static void runOnMainThreak(Runnable r){
+        sUI.post(r);
+    }
+    public static void runOnWorkThreak(Runnable r){
+        sWorker.post(r);
     }
 
     protected void initData() {
@@ -155,43 +168,24 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.filemanager:
                 break;
-            case R.id.idcard:
-                break;
-            case R.id.phone:
-                break;
             case R.id.settings:
                 break;
-            case R.id.btLayout:
+            case R.id.cards:
                 if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_BT_DX)) {
                     IntentUtils.startAPP(mActivity, Constant.PACKAGE_BT_DX);
                 }
                 break;
-            case R.id.btBottLayout:
+            case R.id.police_do:
                 break;
-            case R.id.fmLayout:
+            case R.id.phone:
                 if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_FM_DX)) {
                     IntentUtils.startAPP(mActivity, Constant.PACKAGE_FM_DX);
                 }
                 break;
-            case R.id.setLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_SET_DX)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_SET_DX);
-                }
+            case R.id.apps:
+                Intent allAPP = new Intent(mContext, AllAPP.class);
+                mContext.startActivity(allAPP);
                 break;
-            case R.id.wechatLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_WEBCHAT)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_WEBCHAT);
-                }
-                break;
-            case R.id.qqLayout:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_QQWL)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_QQWL);
-                }
-                break;
-//            case R.id.moreLayout:
-//                Intent allAPP = new Intent(mContext, AllAPP.class);
-//                mContext.startActivity(allAPP);
-//                break;
             default:
                 break;
         }
@@ -201,40 +195,15 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         view.findViewById(R.id.zhifayi).setOnClickListener(this);
         view.findViewById(R.id.ptt).setOnClickListener(this);
         view.findViewById(R.id.filemanager).setOnClickListener(this);
-        view.findViewById(R.id.idcard).setOnClickListener(this);
-        view.findViewById(R.id.phone).setOnClickListener(this);
         view.findViewById(R.id.settings).setOnClickListener(this);
         newPoint();
     }
 
     private void initPagerSecond(View view) {
-        view.findViewById(R.id.btLayout).setOnClickListener(this);
-        view.findViewById(R.id.btBottLayout).setOnClickListener(this);
-        view.findViewById(R.id.fmLayout).setOnClickListener(this);
-        fmSize = (TextView) view.findViewById(R.id.fmSize);
-        view.findViewById(R.id.setLayout).setOnClickListener(this);
-        view.findViewById(R.id.setLayout).setOnLongClickListener(mLongClick);
-        view.findViewById(R.id.setLayout).setOnTouchListener(mTouchListener);
-        view.findViewById(R.id.lightLayout).setOnTouchListener(mLightTouch);
-        lightSeekBar = (com.rmicro.launcher.view.MySeekBar)view.findViewById(R.id.lightSeekBar);
-        lightSeekBar.setMax(255);
-        normal = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SCREEN_BRIGHTNESS, 255);
-        lightSeekBar.setProgress(normal);
-        view.findViewById(R.id.soundLayout).setOnTouchListener(mSoundTouch);
-        soundSeekBar = (com.rmicro.launcher.view.MySeekBar)view.findViewById(R.id.soundSeekBar);
-        int maxVolume = mAudioManager
-                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int currentVolume = mAudioManager
-                .getStreamVolume(AudioManager.STREAM_MUSIC);
-        soundSeekBar.setMax(maxVolume);
-        soundSeekBar.setProgress(currentVolume);
-        wechatLayout = (RelativeLayout)view.findViewById(R.id.wechatLayout);
-        wechatLayout.setOnClickListener(this);
-
-        qqLayout = (RelativeLayout)view.findViewById(R.id.qqLayout);
-        qqLayout.setOnClickListener(this);
-
+        view.findViewById(R.id.cards).setOnClickListener(this);
+        view.findViewById(R.id.police_do).setOnClickListener(this);
+        view.findViewById(R.id.phone).setOnClickListener(this);
+        view.findViewById(R.id.apps).setOnClickListener(this);
         newPoint();
     }
     private void registerBroadcast() {

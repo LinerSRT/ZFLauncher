@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorSwitch">
+    android:layout_width="320px"
+    android:layout_height="240px">
 
     <LinearLayout
         android:id="@+id/navigationPoint"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="@dimen/top_nav_line_height"
+        android:layout_marginTop="@dimen/top_nav_line_top"
         android:gravity="center"
         android:orientation="horizontal">
     </LinearLayout>
@@ -16,9 +15,10 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/viewpageHight"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/appcard_view_top"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/marging2">
+        android:layout_marginBottom="@dimen/margin10">
     </android.support.v4.view.ViewPager>
 </RelativeLayout>

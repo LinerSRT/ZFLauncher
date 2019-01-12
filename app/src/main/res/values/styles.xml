@@ -7,6 +7,13 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <!-- Launcher activity theme -->
+    <style name="Theme" parent="@android:style/Theme.Holo.Wallpaper.NoTitleBar">
+    </style>
+    <style name="Theme.WallpaperPicker">
+        <item name="android:screenOrientation">nosensor</item>
+    </style>
+
     <style name="TextTopBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/topbarMarging10</item>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/appcard_view_top"
+        android:orientation="horizontal">
+        <!-- navi -->
+        <LinearLayout
+            android:id="@+id/zhifayi"
+            android:layout_width="@dimen/appcard_view_width"
+            android:layout_height="@dimen/appcard_view_heiht"
+            android:layout_marginLeft="@dimen/appcard_view_left"
+            android:layout_weight="1"
+            android:background="@drawable/zf_app_select_style_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/appcard_view_image_width"
+                android:layout_height="@dimen/appcard_view_image_height"
+                android:layout_marginLeft="@dimen/margin10"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_camera" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="1"
+                android:layout_marginLeft="@dimen/margin20"
+                android:text="@string/name_zhifa"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ptt"
+            android:layout_width="@dimen/appcard_view_width"
+            android:layout_height="@dimen/appcard_view_heiht"
+            android:layout_marginLeft="@dimen/appcard_view_left"
+            android:layout_marginRight="@dimen/appcard_view_right"
+            android:layout_weight="1"
+            android:background="@drawable/zf_app_select_style_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/appcard_view_image_width"
+                android:layout_height="@dimen/appcard_view_image_height"
+                android:layout_marginLeft="@dimen/margin10"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_ptt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="1"
+                android:layout_marginLeft="@dimen/margin20"
+                android:text="@string/name_ptt"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin10"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/filemanager"
+            android:layout_width="@dimen/appcard_view_width"
+            android:layout_height="@dimen/appcard_view_heiht"
+            android:layout_marginLeft="@dimen/appcard_view_left"
+            android:layout_weight="1"
+            android:background="@drawable/zf_app_select_style_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/appcard_view_image_width"
+                android:layout_height="@dimen/appcard_view_image_height"
+                android:layout_marginLeft="@dimen/margin10"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_filemanager" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="1"
+                android:layout_marginLeft="@dimen/margin20"
+                android:text="@string/name_file_manager"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18" />
+        </LinearLayout>
+
+        <!-- driv -->
+        <LinearLayout
+            android:id="@+id/settings"
+            android:layout_width="@dimen/appcard_view_width"
+            android:layout_height="@dimen/appcard_view_heiht"
+            android:layout_marginLeft="@dimen/appcard_view_left"
+            android:layout_marginRight="@dimen/appcard_view_left"
+            android:layout_weight="1"
+            android:background="@drawable/zf_app_select_style_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/appcard_view_image_width"
+                android:layout_height="@dimen/appcard_view_image_height"
+                android:layout_marginLeft="@dimen/margin10"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="1"
+                android:layout_marginLeft="@dimen/margin20"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18"
+                android:text="@string/name_settings" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
