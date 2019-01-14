@@ -9,106 +9,15 @@
         <color name="colorAccent">#26abe4</color>
         <color name="alpha_main_color">#b033475f</color>
 
-        <color name="Oringe_primary">#F44336</color>
-        <color name="Oringe_primary_dark">#D32F2F</color>
-
-        <!--<color name="title_bg">#2f3737</color>-->
-        <!--预览区域背景-->
-        <!--<color name="preview_bg">#43475f</color>-->
-        <color name="preview_bg">#000000</color>
-        <!--背景-->
-        <color name="itm_background">#8e8e8e</color>
-        <color name="wifi_itm_background">#d6d6d6</color>
-        <color name="text_color_black">#000000</color>
-        <color name="text_color_shadow">#7d7d7d</color>
-        <color name="line_bg">#a5a5a5</color>
-
-        <!--对话框字体背景-->
-        <color name="dialog_line_bg">#7d7d7d</color>
-        <color name="dialog_title_line">#26abe4</color>
-        <color name="dialog_background">#ffffff</color>
-        <color name="dialog_text_color">#6d6d6d</color>
-        <color name="dialog_text_color_title">#333333</color>
-        <color name="process_dialog_text">#56abe4</color>
-
-        <color name="bbutton_danger">#ffd9534f</color>
-        <color name="bbutton_danger_edge">#ffd43f3a</color>
-        <color name="bbutton_danger_pressed">#ffd2322d</color>
-        <color name="bbutton_danger_pressed_edge">#ffac2925</color>
-        <color name="bbutton_danger_disabled">#a5d9534f</color>
-        <color name="bbutton_danger_disabled_edge">#a5d43f3a</color>
-
-        <color name="bbutton_info">#ff5bc0de</color>
-        <color name="bbutton_info_edge">#ff46b8da</color>
-        <color name="bbutton_info_pressed">#ff39b3d7</color>
-        <color name="bbutton_info_pressed_edge">#ff269abc</color>
-        <color name="bbutton_info_disabled">#a55bc0de</color>
-        <color name="bbutton_info_disabled_edge">#a546b8da</color>
-
-
-        <!--页面设置 选项List-->
-        <!--<color name="settings_item_background">#A6A6A0</color>-->
-        <color name="settings_item_background">#E0E0E0</color>
-        <!--左侧滑菜单-->
-        <color name="left_menu_background">#E0E0E0</color>
-        <color name="left_menu_item_background">#C0C0C0</color>
-
-        <color name="sytem_status_txt_color">#7d7d7d</color>
-        <color name="sytem_status_title_bg">#8e8e8e</color>
-        <color name="title_bg">#2f3737</color>
-
-        <!-- logged -->
-        <color name="logged_line">#c6c6c6</color>
-        <color name="logged_zt_color">#c5c5c5</color>
-        <color name="logged_checkbox_zt">#8e8e8e</color>
-
-        <!--<color name="preview_bg">#262d30</color>-->
-        <!--<color name="preview_bg">#2f3737</color>-->
-        <color name="left_menu_bg">#444444</color>
         <color name="touch">#56abe4</color>
-
+        <color name="transparent">#00000000</color>
         <color name="black">#000000</color>
         <color name="white">#FFFFFF</color>
         <color name="green">#47a447</color>
-        <color name="transparent">#00000000</color>
-
-        <!-- 日历 -->
-        <color name="rili">#636363</color>
-        <color name="Calendar_WeekBgColor">#e8e8e8</color>
-        <!-- 周字体颜色 -->
-        <color name="Calendar_WeekFontColor">#908f8f</color>
-        <!-- 日历天背景颜色 -->
-        <color name="Calendar_DayBgColor">#ffffff</color>
-        <!-- 假日的背景颜色-->
-        <color name="isHoliday_BgColor">#E0E0E0</color>
-        <!-- 取消一个月的字体颜色 -->
-        <color name="unPresentMonth_FontColor">#8C8A8C</color>
-        <!--是这个月的字体颜色-->
-        <color name="isPresentMonth_FontColor">#000000</color>
-        <!-- 是今天的背景颜色 -->
-        <color name="isToday_BgColor">#908f8f</color>
-        <!-- 特别提醒 -->
-        <color name="specialReminder">#FF0000</color>
-        <!-- 常见的提醒 -->
-        <color name="commonReminder">#BDBAB5</color>
-        <color name="calenderColor">#303F9F</color>
-
-        <!--文件管理-->
         <color name="yellow">#FFF000</color>
         <color name="gray">#A6A6A0</color>
         <color name="orange">#ff9900</color>
-        <color name="deepcolor">#faaa5f</color>
-        <color name="shadowcolor">#333333</color>
-        <color name="naming">#ABABAB</color>
-        <color name="background">#272727</color>
-        <color name="orange_yellow">#9b9ba0</color>
-        <drawable name="semi_black">#80000000</drawable>
-        <color name="remote_connect_text">#FFe78018</color>
-        <color name="remote_disconnect_text">#FF901821</color>
 
-
-        <!--/////////////////新的颜色配置////////////////////-->
-        <!--主颜色-->
         <color name="color_c1">#2084d3</color><!--小面积使用,用于特别需要强调和突出的文字,按钮以及icon-->
         <color name="color_c1_press">#56abe4</color><!--小面积使用,用于特别需要强调和突出的文字,按钮以及icon-->
         <color name="color_c2">#333333</color><!--重要级文字信息,带图表列表文字-->
@@ -128,18 +37,6 @@
 
         <color name="pup_menu">#e233475f</color>
         <color name="pup_menu_line">#F833475f</color>
-        <!--半透明-黑色-->
-        <color name="color_half_dark">#FF000000</color><!--重要级文字信息,带图表列表文字-->
-        <color name="color_register_press">#22475f</color>
-
-        <color name="gesture_color">#ff0563c1</color>
-        <color name="uncertain_gesture_color">#ff848484</color>
-        <color name="dilog_charing_bg">#252525</color>
-        <color name="holo_blue_dark">#4aaa3f</color>
-        <color name="darker_gray">#1b1b1b</color>
-        <color name="holo_red_light">#e13131</color>
-
-        <color name="test">#333333</color>
 
         <color name="colorWhite">#F5F5F5</color>
         <color name="colorBlack">#000000</color>

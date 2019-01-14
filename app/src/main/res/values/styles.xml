@@ -18,7 +18,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/topbarMarging10</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textSizeTopbar</item>
     </style>
 
@@ -35,7 +35,7 @@
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:text">@string/textNull</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textWeekDataSize</item>
     </style>
     <!-- 以上为通用-->
@@ -54,7 +54,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">@dimen/textView1MarginTop</item>
         <item name="android:textSize">@dimen/textView1SizeTop</item>
-        <item name="android:textColor">@color/colorTextColor</item>
+        <item name="android:textColor">@color/color_c2</item>
     </style>
 
     <style name="BtmText">
@@ -64,7 +64,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginBottom">@dimen/textView1MarginBtm</item>
         <item name="android:textSize">@dimen/textView1SizeTop</item>
-        <item name="android:textColor">@color/colorTextColor</item>
+        <item name="android:textColor">@color/color_c2</item>
     </style>
 
     <style name="ImageIcon">
@@ -112,6 +112,6 @@
         <item name="android:layout_width">@dimen/switchHeightWidth</item>
         <item name="android:background">@drawable/switch_bg</item>
         <item name="android:textSize">@dimen/switchTextSize</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

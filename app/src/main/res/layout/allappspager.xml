@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <GridView
         android:id="@+id/allAPPGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/appcard_view_left"
+        android:layout_marginRight="@dimen/appcard_view_right"
+        android:layout_marginTop="@dimen/appcard_view_top"
+        android:layout_marginBottom="5px"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:horizontalSpacing="10px"
+        android:verticalSpacing="10px"
         android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
         android:overScrollMode="never"></GridView>
 </RelativeLayout>

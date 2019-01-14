@@ -1,6 +1,5 @@
 package com.rmicro.launcher.adapter;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -8,9 +7,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-/**
- * Created by Freedom on 2017/12/20.
- */
 
 public class MyVPAdapter extends PagerAdapter {
 

@@ -39,17 +39,20 @@
 
     <!--主界面布局-->
     <dimen name="top_nav_line_width">50px</dimen>
-    <dimen name="top_nav_line_height">15px</dimen>
+    <dimen name="top_nav_line_height">5px</dimen>
     <dimen name="top_nav_line_top">5px</dimen>
 
     <dimen name="appcard_view_width">150px</dimen>
     <dimen name="appcard_view_heiht">90px</dimen>
     <dimen name="appcard_view_image_width">80px</dimen>
     <dimen name="appcard_view_image_height">80px</dimen>
-    <dimen name="appcard_view_top">20px</dimen>
+    <dimen name="appcard_view_top">10px</dimen>
     <dimen name="appcard_view_left">10px</dimen>
     <dimen name="appcard_view_right">10px</dimen>
     <dimen name="appcard_view_btm">10px</dimen>
+
+    <dimen name="apps_icon_image_width">60px</dimen>
+    <dimen name="apps_icon_image_height">60px</dimen>
 
     <!-- 应用图标大小 -->
     <dimen name="app_icon_size">80px</dimen>

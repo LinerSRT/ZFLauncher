@@ -1,11 +1,10 @@
 package com.rmicro.launcher.custom;
 
 import android.app.Application;
-import android.content.Context;
 import android.text.TextUtils;
 
 import com.rmicro.launcher.R;
-import com.rmicro.launcher.Utils.CrashHandler;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

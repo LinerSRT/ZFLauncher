@@ -28,7 +28,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_cards" />
 
-            <TextView
+            <com.rmicro.launcher.utils.customFontUtils.FZLTBlodBlackView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="1"
@@ -56,9 +56,9 @@
                 android:layout_marginLeft="@dimen/margin10"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_deskclock" />
+                android:src="@drawable/icon_policeinfo" />
 
-            <TextView
+            <com.rmicro.launcher.utils.customFontUtils.FZLTBlodBlackView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="1"
@@ -92,7 +92,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_dialer" />
 
-            <TextView
+            <com.rmicro.launcher.utils.customFontUtils.FZLTBlodBlackView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="1"
@@ -122,7 +122,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_more_app" />
 
-            <TextView
+            <com.rmicro.launcher.utils.customFontUtils.FZLTBlodBlackView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="1"

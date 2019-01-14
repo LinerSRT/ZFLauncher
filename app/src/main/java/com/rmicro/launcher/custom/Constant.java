@@ -1,14 +1,17 @@
 package com.rmicro.launcher.custom;
 
-/**
- * Created by Freedom on 2017/12/2.
- */
-
 public class Constant {
 
     /**
      * DX包名
      */
+    public static final String PACKAGE_RMICRO_RECODER = "com.rmicro.recoder";//
+    public static final String PACKAGE_RMICRO_SETTINGS = "com.rmicro.settings";//
+    public static final String PACKAGE_RMICRO_FILE_MANAGE = "com.rmicro.filemanager";//
+    public static final String PACKAGE_RMICRO_VOIP = "com.rmicro.voip";//
+    public static final String PACKAGE_RMICRO_CARDS_REC = "com.rmicro.cards";//
+    public static final String PACKAGE_RMICRO_PHONE = "com.rmicro.phone";//
+    public static final String PACKAGE_RMICRO_POLICEINFO = "com.rmicro.police";//
     public static final String PACKAGE_BT_DX = "com.mtk.bluetooth";//蓝牙电话
     public static final String PACKAGE_DRIV_DX = "com.mediatek.carcorderdemo";//行车记录仪
     public static final String PACKAGE_DRIV_DX_NEW = "com.digissin.carcorder";//行车记录仪
@@ -58,6 +61,8 @@ public class Constant {
     public static final String PACKAGE_KWMUSIC = "cn.kuwo.kwmusiccar";//酷我音乐
     public static final String PACKAGE_GPS = "com.chartcross.gpstestplus";//GPS
     public static final String PACKAGE_MAP_COPY = "com.digissin.shintools";//地图拷贝
+    public static final String PACKAGE_GALLERY = "com.android.gallery3d";
+    public static final String PACKAGE_FILE_EXPLORE= "com.android.filemanage";
 
     public static final String PACKAGE_VOLTE = "com.android.dialer";//VOLTE
     public static final String PACKAGE_CONTROLLER = "com.pg.software.controller";//蓝牙方控

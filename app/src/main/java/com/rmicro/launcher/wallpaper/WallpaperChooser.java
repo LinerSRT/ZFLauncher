@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import cn.ingenic.launcher.R;
+
+import com.rmicro.launcher.R;
 
 public class WallpaperChooser extends Activity {
 	   @SuppressWarnings("unused")

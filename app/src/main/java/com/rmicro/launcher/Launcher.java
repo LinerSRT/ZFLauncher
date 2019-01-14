@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
@@ -20,6 +21,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,10 +29,9 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.rmicro.launcher.Utils.IntentUtils;
-import com.rmicro.launcher.Utils.LogUtils;
-import com.rmicro.launcher.Utils.PreferanceUtils;
-import com.rmicro.launcher.Utils.Utils;
+import com.rmicro.launcher.utils.IntentUtils;
+import com.rmicro.launcher.utils.PreferanceUtils;
+import com.rmicro.launcher.utils.AUtils;
 import com.rmicro.launcher.adapter.MyVPAdapter;
 import com.rmicro.launcher.custom.Constant;
 import com.rmicro.launcher.custom.WeatherBean;
@@ -67,6 +68,10 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_main);
         mHandler = new MyHandler(this);
         initData();
@@ -117,19 +122,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
         Intent chooser = Intent.createChooser(pickWallpaper, "Set WallPaper");
         startActivityForResult(chooser, 10);
     }
-
-    void appChanged(String[] packageNames, int op) {
-        if (mWorkspace != null)
-            mWorkspace.appChanged(packageNames, op);
-    }
-
-    static void runOnMainThreak(Runnable r){
-        sUI.post(r);
-    }
-    public static void runOnWorkThreak(Runnable r){
-        sWorker.post(r);
-    }
-
     protected void initData() {
         mTelephoneManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
@@ -163,27 +155,42 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.zhifayi:
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_RECODER)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_RECODER);
+                }
                 break;
             case R.id.ptt:
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_VOIP)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_VOIP);
+                }
                 break;
             case R.id.filemanager:
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_FILE_MANAGE)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_FILE_MANAGE);
+                }
                 break;
             case R.id.settings:
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_SETTINGS)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_SETTINGS);
+                }
                 break;
             case R.id.cards:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_BT_DX)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_BT_DX);
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_CARDS_REC)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_CARDS_REC);
                 }
                 break;
             case R.id.police_do:
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_POLICEINFO)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_POLICEINFO);
+                }
                 break;
             case R.id.phone:
-                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_FM_DX)) {
-                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_FM_DX);
+                if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_RMICRO_PHONE)) {
+                    IntentUtils.startAPP(mActivity, Constant.PACKAGE_RMICRO_PHONE);
                 }
                 break;
             case R.id.apps:
-                Intent allAPP = new Intent(mContext, AllAPP.class);
+                Intent allAPP = new Intent(mContext, AllAppList.class);
                 mContext.startActivity(allAPP);
                 break;
             default:
@@ -249,7 +256,6 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             switch (msg.what) {
                 case REFRESH_WATER:
                     WeatherBean bean = (WeatherBean) msg.obj;
-                    LogUtils.e(bean.getmWeather() + "  " + bean.getmTempratureSize() + "  " + bean.getmWeatherPic());
                     break;
                 case REFRESH_LIGHT:
                     int mBrightProgress = Settings.System.getInt(
@@ -328,7 +334,7 @@ public class Launcher extends AppCompatActivity implements View.OnClickListener 
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 if (Math.abs(y1 - event.getY()) > 50 && isLongClick) {
                     if (IntentUtils.haveAPP(mContext, Constant.PACKAGE_SET_ANDROID)) {
-                        Utils.makeToast(mContext, mContext.getString(R.string.androidSetting));
+                        AUtils.makeToast(mContext, mContext.getString(R.string.androidSetting));
                         IntentUtils.startAPP(mActivity, Constant.PACKAGE_SET_ANDROID);
                     }
                     isLongClick = false;
